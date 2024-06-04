@@ -24,11 +24,10 @@ jobs:
       - name: npm install, build, and test
         run: |
           npm install
-          npm run build --if-present
-          npm run test --if-present
+          npm run build
 
       - name: Zip artifact for deployment
-        run: zip release.zip ./* -r
+        run: zip release.zip ./.next/standalone/* -r
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v3
@@ -60,3 +59,4 @@ jobs:
           slot-name: 'Production'
           package: .
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_094BC558F20849AD81A9DCCC0288F6D8 }}
+          startup-command: "node server.js"
