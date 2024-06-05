@@ -48,8 +48,8 @@ jobs:
         with:
           name: node-app
 
-      - name: Unzip artifact for deployment
-        run: unzip release.zip
+      # - name: Unzip artifact for deployment
+      #   run: unzip release.zip
 
       - name: list files
         run: ls -a
@@ -60,6 +60,6 @@ jobs:
         with:
           app-name: 'nextjs-gha'
           slot-name: 'Production'
-          package: .
+          package: release.zip
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_094BC558F20849AD81A9DCCC0288F6D8 }}
           # startup-command: "node server.js"
