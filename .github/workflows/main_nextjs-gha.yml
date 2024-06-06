@@ -27,8 +27,7 @@ jobs:
           npm run build
 
       - name: Show files
-        run: ls -a
-        run: ls -r
+        run: ls -a && ls -r 
 
       - name: Zip artifact for deployment
         run: zip release.zip ./.next/standalone -r
